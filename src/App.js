@@ -1,11 +1,22 @@
 import './App.css';
+import { Component } from 'react'
+import NavBar from './components/NavBar'
 
-function App() {
-  return (
-  <div class="App">
-  <h2>Insight</h2>
-  </div>
-  )
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <NavBar />
+      </div>
+    );
+  }
 }
 
 export default App;
