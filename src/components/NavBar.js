@@ -11,24 +11,18 @@ export default class NavBar extends Component {
 
     render() {
         return (
-            <Header 
-            className="App-header"
-            size="small"
-            >
             <Menu 
                 fixed='top'
                 inverted='true'
+                className='nav-menu'
+                header={true}
             >
                 <Menu.Item name='Accounts'>
                     Accounts
-                </Menu.Item>
-
-                <Menu.Item name='Research'>
                     Research
                 </Menu.Item>
 
                 <Menu.Item 
-                position='center'
                 name='Insight'
                 >
                     Insight
@@ -39,7 +33,6 @@ export default class NavBar extends Component {
                     <Button>Sign Up</Button>
                 </Menu.Item>
             </Menu>
-            </Header>
         )
     }
 }
