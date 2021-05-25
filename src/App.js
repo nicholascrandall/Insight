@@ -1,7 +1,7 @@
 import './App.css';
 import { Component } from 'react'
 import NavBar from './components/NavBar'
-import Stock from './components/Stock'
+import Markets from './components/Markets'
 import Register from './components/Register'
 
 
@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Stock />
+        <Markets />
         <Register baseURL={baseURL} />
       </div>
     );

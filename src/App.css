@@ -29,3 +29,14 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.rundown {
+  margin: 15px auto;
+  max-width: 45%;
+  border: 2px solid black;
+}
+
+.newsImage {
+  padding-top: 3vh;
+  width: 80%;
+}
