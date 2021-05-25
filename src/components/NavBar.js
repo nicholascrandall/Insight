@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Menu, Button, Header } from 'semantic-ui-react'
+import { Menu, Button } from 'semantic-ui-react'
 
 export default class NavBar extends Component {
     constructor(props) {
@@ -13,9 +13,8 @@ export default class NavBar extends Component {
         return (
             <Menu 
                 fixed='top'
-                inverted='true'
+                inverted={true}
                 className='nav-menu'
-                header={true}
             >
                 <Menu.Item name='Accounts'>
                     Accounts
