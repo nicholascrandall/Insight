@@ -32,9 +32,9 @@ export default class Markets extends Component {
                         this.state.news.articles.map(article => {
                             return (
                                 <>
-                                <img src={article.urlToImage} className="newsImage" alt="business article" />
                                 <a href={article.url}><h3>{article.title}</h3>
                                 </a>
+                                <img src={article.urlToImage} className="newsImage" alt="business article" />
                                 <li>{article.description}</li>
                                 </>
                             )

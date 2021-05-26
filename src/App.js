@@ -3,6 +3,7 @@ import { Component } from 'react'
 import NavBar from './components/NavBar'
 import Markets from './components/Markets'
 import Register from './components/Register'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
 let baseURL = ''
@@ -20,12 +21,52 @@ class App extends Component {
     }
   }
 
+  setCurrentUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
+  }
+
+  logout = () =>{
+    const url = baseURL + '/session/'
+      fetch(url, {method:'DELETE'})
+      .then(response=> response.json())
+      .then(data => {
+        this.setState({
+          currentUser: ''
+        })
+      })
+    }
+
   render() {
     return (
       <div className="App">
-        <NavBar />
-        <Markets />
-        <Register baseURL={baseURL} />
+        <BrowserRouter>
+          <Switch>
+            {/* STOCK SHOW PAGE */}
+            <Route path="/stocks">
+              <NavBar />
+
+            </Route>
+
+
+            {/* User Login */}
+            <Route path="/user/login">
+              <NavBar />
+            </Route>
+
+            {/* User Registration */}
+            <Route path="/user/new">
+              <Register baseURL={baseURL} />
+            </Route>
+
+            {/* HOME PAGE - KEEP AT BOTTOM */}
+            <Route path="/">
+              <NavBar />
+              <Markets />
+            </Route>
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
