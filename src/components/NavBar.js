@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Menu, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default class NavBar extends Component {
     constructor(props) {
@@ -16,10 +17,12 @@ export default class NavBar extends Component {
                 inverted={true}
                 className='nav-menu'
             >
-                <Menu.Item name='Accounts'>
-                    Accounts
-                    Research
-                </Menu.Item>
+                <Link to='/' className='nav-link'>
+                    <Menu.Item name='News'>
+                        Financial News
+                    </Menu.Item>
+                </Link>
+                
 
                 <Menu.Item 
                 name='Insight'
@@ -28,8 +31,12 @@ export default class NavBar extends Component {
                 </Menu.Item>
                 
                 <Menu.Item position='right'>
-                    <Button>Log in</Button>
-                    <Button>Sign Up</Button>
+                    <Link to='/user/login'>
+                        <Button>Log in</Button>
+                    </Link>
+                    <Link to='/user/new'>
+                        <Button>Sign Up</Button>
+                    </Link>'
                 </Menu.Item>
             </Menu>
         )

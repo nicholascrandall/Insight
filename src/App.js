@@ -57,6 +57,7 @@ class App extends Component {
 
             {/* User Registration */}
             <Route path="/user/new">
+              <NavBar />
               <Register baseURL={baseURL} />
             </Route>
 
