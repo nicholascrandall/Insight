@@ -27,19 +27,20 @@ export default class Markets extends Component {
             return (
                 <div className="rundown">
                     <h2>Daily Rundown</h2>
+                    <br />
                     <ul>
                         {this.state.news.status === "ok" ?
-                        this.state.news.articles.map(article => {
+                        this.state.news.articles.map((article, index) => {
                             return (
                                 <>
                                 <a href={article.url}><h3>{article.title}</h3>
                                 </a>
                                 <img src={article.urlToImage} className="newsImage" alt="business article" />
-                                <li>{article.description}</li>
+                                <li key={index}>{article.description}</li>
                                 </>
                             )
                         })
-                        : <p>No Articles Found</p>}
+                        : <h2>No Articles Found</h2>}
                     </ul>
                 </div>
             )

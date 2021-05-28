@@ -1,6 +1,7 @@
 import { Component } from 'react'
-import { Menu, Button } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import logo from '../images/insight-logo.png'
 
 export default class NavBar extends Component {
     constructor(props) {
@@ -12,33 +13,36 @@ export default class NavBar extends Component {
 
     render() {
         return (
+            <>
             <Menu 
                 fixed='top'
                 inverted={true}
                 className='nav-menu'
             >
-                <Link to='/' className='nav-link'>
-                    <Menu.Item name='News'>
-                        Financial News
+                <Link to='/'>
+                    <Menu.Item name='Logo' className='item'>
+                        <img src={logo} alt="insight logo" className="logo" />
+                    </Menu.Item>
+                </Link>
+               
+                <Link to='/'> 
+                    <Menu.Item name='News' className='item'>
+                        Insight
                     </Menu.Item>
                 </Link>
                 
-
-                <Menu.Item 
-                name='Insight'
-                >
-                    Insight
-                </Menu.Item>
-                
-                <Menu.Item position='right'>
+                <Menu.Item className='buttons'>
                     <Link to='/user/login'>
-                        <Button>Log in</Button>
+                        <button>Log In</button>
                     </Link>
                     <Link to='/user/new'>
-                        <Button>Sign Up</Button>
-                    </Link>'
+                        <button>Sign Up</button>
+                    </Link>
+
                 </Menu.Item>
+                
             </Menu>
+            </>
         )
     }
 }
