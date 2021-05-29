@@ -3,6 +3,7 @@ import { Component } from 'react'
 import NavBar from './components/NavBar'
 import Markets from './components/Markets'
 import Register from './components/Registration'
+import Login from './components/Login'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
@@ -53,7 +54,7 @@ class App extends Component {
             {/* User Login */}
             <Route path="/user/login">
               <NavBar />
-              {/* <Login baseURL={baseURL} /> */}
+              <Login baseURL={baseURL} />
             </Route>
 
             {/* User Registration */}
