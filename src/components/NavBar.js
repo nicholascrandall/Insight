@@ -54,16 +54,18 @@ export default class NavBar extends Component {
 
     handleChange = (event) => {
         this.setState({
-            [event.target.id]: event.target.value
+            [event.target.name]: event.target.value
         })
+        console.log(this.state)
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = (event, info) => {
         let url = this.props.baseURL + '/users/register'
-        console.log('REGISTRATION')
+        let userInfo = [this.state.username, this.state.password, this.state.email]
+        console.log(userInfo)
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify(userInfo),
             headers: {'Content-Type': 'application/json'},
             mode: 'cors',
             credentials: 'include'
@@ -80,10 +82,11 @@ export default class NavBar extends Component {
 
     handleLogin = (event) => {
         let url = this.props.baseURL + '/users/login'
+        let userInfo = [this.state.username, this.state.password, this.state.email]
         console.log('LOGIN')
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify(userInfo),
             headers: {'Content-Type': 'application/json'},
             mode: 'cors',
             credentials: 'include'
@@ -141,20 +144,19 @@ export default class NavBar extends Component {
                             type: "email",
                             id: "email-login",
                             name: "email",
-                            placeholder: "Email (Login)"
+                            placeholder: "Email (Login)",
                         },
                         {
                             type: "text",
                             id: "username-login",
                             name: "username",
-                            placeholder: "Username (Login)"
+                            placeholder: "Username (Login)",
                         },
                         {
                             type: "password",
                             id: "password-login",
                             name: "password",
-                            placeholder: "Password (Login)"
-                            
+                            placeholder: "Password (Login)",
                         }
                     ],
                     loginBtn: {
@@ -166,25 +168,26 @@ export default class NavBar extends Component {
                             type: "email",
                             id: "email-register",
                             name: "email",
-                            placeholder: "Email (Register)"
+                            placeholder: "Email (Register)",
                         },
                         {
                             type: "text",
                             id: "username-register",
                             name: "username",
-                            placeholder: "Username (Register)"
+                            placeholder: "Username (Register)",
                         },
                         {
                             type: "password",
                             id: "password-register",
                             name: "password",
-                            placeholder: "Password (Register)"
+                            placeholder: "Password (Register)",
                         }
                     ],
                     registerBtn: {
                         label: "Create Account"
                     },
                     onRegister: this.handleSubmit,
+                    
                 }}
 
                 loginError={{
@@ -195,7 +198,6 @@ export default class NavBar extends Component {
                 }}
                 startLoading={this.startLoading.bind(this)}
                 finishLoading={this.finishLoading.bind(this)}
-
                 />
             </>
         )

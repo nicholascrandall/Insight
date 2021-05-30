@@ -3,6 +3,7 @@ import { Component } from 'react'
 import NavBar from './components/NavBar'
 import Markets from './components/Markets'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Register from './components/Registration';
 
 
 let baseURL = ''
@@ -49,8 +50,9 @@ class App extends Component {
             </Route>
 
             {/* User Test Page */}
-            <Route path="/test">
+            <Route path="/register">
               <NavBar baseURL={baseURL}/>
+              <Register baseURL={baseURL}/>
             </Route>
 
             {/* HOME PAGE - KEEP AT BOTTOM */}
