@@ -10,7 +10,10 @@ export default class NavBar extends Component {
         this.state = {
             showModal: false,
             loading: false,
-            error: null
+            error: null,
+            username: '',
+            password: '',
+            email: '',
         }
     }
 
@@ -20,22 +23,11 @@ export default class NavBar extends Component {
         })
     }
 
-    closeModale() {
+    closeModal() {
         this.setState({
             showModal: false,
             loading: false,
             error: null
-        })
-    }
-
-    onLoginSuccess(method, response) {
-        console.log('logged in with ' + method);
-    }
-
-    onLoginFail(method, response) {
-        console.log('login failed ' + method);
-        this.setState({
-            error: response
         })
     }
 
@@ -53,8 +45,57 @@ export default class NavBar extends Component {
 
     onTabsChange() {
         this.setState({
-            error: null
+            error: null,
+            username: '',
+            password: '',
+            email: ''
         })
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.id]: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        let url = this.props.baseURL + '/users/register'
+        console.log('REGISTRATION')
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {'Content-Type': 'application/json'},
+            mode: 'cors',
+            credentials: 'include'
+        }).then(response => response.json())
+        .then(data => {
+            this.setState({
+                username: '',
+                password: '',
+                email: '',
+            })
+        })
+        .catch(err=> console.log(err))
+    }
+
+    handleLogin = (event) => {
+        let url = this.props.baseURL + '/users/login'
+        console.log('LOGIN')
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {'Content-Type': 'application/json'},
+            mode: 'cors',
+            credentials: 'include'
+        }).then(response => response.json())
+        .then(data => {
+            this.setState({
+                username: '',
+                password: '',
+                email: ''
+            })
+        })
+        .catch(err=> console.log(err))
     }
 
     render() {
@@ -88,33 +129,62 @@ export default class NavBar extends Component {
 
             <ReactModalLogin
                 visible={this.state.showModal}
-                onCloseModal={this.closeModale.bind(this)}
+                onCloseModal={this.closeModal.bind(this)}
                 loading={this.state.loading}
                 error={this.state.error}
                 tabs={{
                     onChange: this.onTabsChange.bind(this),
                 }}
                 form={{
-                    loginInputs: {
-                        email: {
+                    loginInputs: [
+                        {
                             type: "email",
-                            id: "email",
+                            id: "email-login",
                             name: "email",
-                            placeholder: "Email"
+                            placeholder: "Email (Login)"
                         },
-                        username: {
+                        {
                             type: "text",
-                            id: "username",
+                            id: "username-login",
                             name: "username",
-                            placeholder: "Username"
+                            placeholder: "Username (Login)"
                         },
-                        password: {
+                        {
                             type: "password",
-                            id: "password",
+                            id: "password-login",
                             name: "password",
-                            placeholder: "Password"
+                            placeholder: "Password (Login)"
+                            
                         }
-                    }
+                    ],
+                    loginBtn: {
+                        label: "Log In"
+                    },
+                    onLogin: this.handleLogin(),
+                    registerInputs: [
+                        {
+                            type: "email",
+                            id: "email-register",
+                            name: "email",
+                            placeholder: "Email (Register)"
+                        },
+                        {
+                            type: "text",
+                            id: "username-register",
+                            name: "username",
+                            placeholder: "Username (Register)"
+                        },
+                        {
+                            type: "password",
+                            id: "password-register",
+                            name: "password",
+                            placeholder: "Password (Register)"
+                        }
+                    ],
+                    registerBtn: {
+                        label: "Create Account"
+                    },
+                    onRegister: this.handleSubmit(),
                 }}
 
                 loginError={{

@@ -2,8 +2,6 @@ import './App.css';
 import { Component } from 'react'
 import NavBar from './components/NavBar'
 import Markets from './components/Markets'
-import Register from './components/Registration'
-import Login from './components/Login'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
@@ -46,26 +44,18 @@ class App extends Component {
           <Switch>
             {/* STOCK SHOW PAGE */}
             <Route path="/stocks">
-              <NavBar />
+              <NavBar baseURL={baseURL}/>
 
             </Route>
 
-
-            {/* User Login */}
-            <Route path="/user/login">
-              <NavBar />
-              <Login baseURL={baseURL} />
-            </Route>
-
-            {/* User Registration */}
-            <Route path="/user/new">
-              <NavBar />
-              <Register baseURL={baseURL} />
+            {/* User Test Page */}
+            <Route path="/test">
+              <NavBar baseURL={baseURL}/>
             </Route>
 
             {/* HOME PAGE - KEEP AT BOTTOM */}
             <Route path="/">
-              <NavBar />
+              <NavBar baseURL={baseURL}/>
               <Markets />
             </Route>
           </Switch>
