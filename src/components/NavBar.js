@@ -35,12 +35,12 @@ export default class NavBar extends Component {
                 <Menu.Item className='buttons'>
                     {this.props.currentUser?
                     <>
-                    Welcome, {this.props.currentUser.username}
-                    <Link to='/register'>
+                    Welcome, {this.props.currentUser.username} 
+                    
                         <button onClick={this.props.logout}>
                             Log Out
                         </button>
-                    </Link>
+                    
                     </>:
                     
                     <Link to='/register'>

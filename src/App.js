@@ -28,7 +28,8 @@ class App extends Component {
   }
 
   logout = () =>{
-    const url = baseURL + '/users/logout/'
+    console.log('logout function')
+    const url = baseURL + '/users/logout'
       fetch(url, {method:'GET'})
       .then(response=> response.json())
       .then(data => {
@@ -52,13 +53,13 @@ class App extends Component {
 
             {/* User Registration Page */}
             <Route path="/register">
-              <NavBar currentUser={this.state.currentUser} />
+              <NavBar currentUser={this.state.currentUser} logout={this.logout} />
               <Register baseURL={baseURL} setCurrentUser={this.setCurrentUser} />
             </Route>
 
             {/* HOME PAGE - KEEP AT BOTTOM */}
             <Route path="/">
-              <NavBar currentUser={this.state.currentUser} />
+              <NavBar currentUser={this.state.currentUser} logout={this.logout} />
               <Markets />
             </Route>
           </Switch>
