@@ -28,8 +28,8 @@ class App extends Component {
   }
 
   logout = () =>{
-    const url = baseURL + '/session/'
-      fetch(url, {method:'DELETE'})
+    const url = baseURL + '/users/logout/'
+      fetch(url, {method:'GET'})
       .then(response=> response.json())
       .then(data => {
         this.setState({
@@ -39,25 +39,26 @@ class App extends Component {
     }
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <BrowserRouter>
           <Switch>
             {/* STOCK SHOW PAGE */}
             <Route path="/stocks">
-              <NavBar baseURL={baseURL}/>
+              <NavBar currentUser={this.state.currentUser} logout={this.logout} />
 
             </Route>
 
-            {/* User Test Page */}
+            {/* User Registration Page */}
             <Route path="/register">
-              <NavBar baseURL={baseURL}/>
-              <Register baseURL={baseURL}/>
+              <NavBar currentUser={this.state.currentUser} />
+              <Register baseURL={baseURL} setCurrentUser={this.setCurrentUser} />
             </Route>
 
             {/* HOME PAGE - KEEP AT BOTTOM */}
             <Route path="/">
-              <NavBar baseURL={baseURL}/>
+              <NavBar currentUser={this.state.currentUser} />
               <Markets />
             </Route>
           </Switch>

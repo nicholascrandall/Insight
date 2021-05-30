@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import LoginModal from "react-login-modal";
+import { Redirect } from 'react-router-dom'
 
 export default class Register extends Component {
     constructor(props) {
@@ -16,7 +17,8 @@ export default class Register extends Component {
                 username: "",
                 password: ""
             },
-            signUpSuccess: false
+            signUpSuccess: false,
+            logInSuccess: false
         }
     }
 
@@ -68,20 +70,21 @@ export default class Register extends Component {
             credentials: 'include'
         }).then(response => response.json())
         .then(data => {
-            let signUpSuccess = data.status!==400
+            console.log(data)
+            this.props.setCurrentUser(data.data)
             this.setState({
                 username: '',
                 password: '',
                 email: '',
-                signUpSuccess: signUpSuccess
+                logInSuccess: data.message
             })
         })
         .catch(err=> console.log(err))
     }
 
     render() {
-        if (this.state.signUpSuccess) {
-            window.location.reload();
+        if (this.state.logInSuccess) {
+            return <Redirect to='/' />
         }
         return (
           <LoginModal
