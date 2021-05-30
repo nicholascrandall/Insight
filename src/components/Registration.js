@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import LoginModal from "react-login-modal";
-import { Redirect } from 'react-router-dom'
 
 export default class Register extends Component {
     constructor(props) {
@@ -16,7 +15,8 @@ export default class Register extends Component {
             login: {
                 username: "",
                 password: ""
-            }
+            },
+            signUpSuccess: false
         }
     }
 
@@ -25,6 +25,7 @@ export default class Register extends Component {
         signUp.password = password;
         signUp.username = username;
         signUp.email = email
+
         this.setState({
             signUp,
           }, () => console.log(this.state.signUp));
@@ -49,27 +50,40 @@ export default class Register extends Component {
     }
 
     handleLogin = (username, password) => {
+        const login = this.state.login
+        login.password = password;
+        login.username = username;
+
+        this.setState({
+            login,
+          }, () => console.log(this.state.login));
+
         let url = this.props.baseURL + '/users/login'
-        let userInfo = [username, password]
+        
         console.log('LOGIN')
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(userInfo),
+            body: JSON.stringify(this.state.login),
             headers: {'Content-Type': 'application/json'},
             mode: 'cors',
             credentials: 'include'
         }).then(response => response.json())
         .then(data => {
+            let signUpSuccess = data.status!==400
             this.setState({
                 username: '',
                 password: '',
-                email: ''
+                email: '',
+                signUpSuccess: signUpSuccess
             })
         })
         .catch(err=> console.log(err))
     }
 
     render() {
+        if (this.state.signUpSuccess) {
+            window.location.reload();
+        }
         return (
           <LoginModal
             handleSignup={this.handleSignup}
@@ -79,7 +93,7 @@ export default class Register extends Component {
             buttonHoverColor={"#A7D5B0"}
             fontFamily={"roboto"}
             errorMessage={"Incorrect username or password"}
-            errorEnable={true}
+            errorEnable={false}
           />
         );
       }
