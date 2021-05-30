@@ -60,7 +60,6 @@ export default class Register extends Component {
 
         let url = this.props.baseURL + '/users/login'
         
-        console.log('LOGIN')
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(this.state.login),
