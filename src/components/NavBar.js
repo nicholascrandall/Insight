@@ -160,7 +160,7 @@ export default class NavBar extends Component {
                     loginBtn: {
                         label: "Log In"
                     },
-                    onLogin: this.handleLogin(),
+                    onLogin: this.handleLogin,
                     registerInputs: [
                         {
                             type: "email",
@@ -184,7 +184,7 @@ export default class NavBar extends Component {
                     registerBtn: {
                         label: "Create Account"
                     },
-                    onRegister: this.handleSubmit(),
+                    onRegister: this.handleSubmit,
                 }}
 
                 loginError={{
