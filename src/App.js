@@ -5,6 +5,7 @@ import Markets from './components/Markets'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Register from './components/Registration';
 import Stock from './components/Stock'
+import SearchForm from './components/SearchForm'
 
 
 let baseURL = ''
@@ -28,6 +29,12 @@ class App extends Component {
     })
   }
 
+  setStockSymbol = (symbol) => {
+    console.log(`${symbol} set`)
+
+
+  }
+
   logout = () =>{
     console.log('logout function')
     const url = baseURL + '/users/logout'
@@ -49,6 +56,7 @@ class App extends Component {
             {/* STOCK SHOW PAGE */}
             <Route path="/stocks">
               <NavBar currentUser={this.state.currentUser} logout={this.logout} />
+              <SearchForm setStockSymbol={this.setStockSymbol} />
               <Stock />
 
             </Route>
@@ -62,6 +70,7 @@ class App extends Component {
             {/* HOME PAGE - KEEP AT BOTTOM */}
             <Route path="/">
               <NavBar currentUser={this.state.currentUser} logout={this.logout} />
+              <SearchForm setStockSymbol={this.setStockSymbol} />
               <Markets />
             </Route>
           </Switch>
