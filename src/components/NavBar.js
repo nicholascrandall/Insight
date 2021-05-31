@@ -24,6 +24,12 @@ export default class NavBar extends Component {
                         <img src={logo} alt="insight logo" className="logo" />
                     </Menu.Item>
                 </Link>
+
+                <Link to='/stocks'>
+                    <Menu.Item name="Stocks" className='item'>
+                        Stocks
+                    </Menu.Item>
+                </Link>
                
                 <Link to='/'> 
                     <Menu.Item name='News' className='item'>

@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import Markets from './components/Markets'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Register from './components/Registration';
+import Stock from './components/Stock'
 
 
 let baseURL = ''
@@ -48,6 +49,7 @@ class App extends Component {
             {/* STOCK SHOW PAGE */}
             <Route path="/stocks">
               <NavBar currentUser={this.state.currentUser} logout={this.logout} />
+              <Stock />
 
             </Route>
 
