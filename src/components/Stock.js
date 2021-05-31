@@ -25,7 +25,25 @@ export default class Stock extends Component {
        if (this.state.stock) {
            return (
                 <div>
-                    <p>Stock API Working</p>
+                    <h2>Previous Close</h2>
+
+                    <h3>Open Price</h3>
+                    <p>${this.state.stock.results[0].o}</p>
+
+                    <h3>Highest Price</h3>
+                    <p>${this.state.stock.results[0].h}</p>
+
+                    <h3>Lowest Price</h3>
+                    <p>${this.state.stock.results[0].l}</p>
+
+                    <h3>Close Price</h3>
+                    <p>${this.state.stock.results[0].c}</p>
+
+                    <h3>Trading Volume</h3>
+                    <p>{this.state.stock.results[0].v}</p>
+
+                    <h3>Number of transactions</h3>
+                    <p>{this.state.stock.results[0].n}</p>
                 </div>
            )
        } else {
