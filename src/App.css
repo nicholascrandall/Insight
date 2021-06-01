@@ -95,11 +95,10 @@ button:hover {
   transform-style: preserve-3d;
 }
 
-.searchInput :hover, :focus {
+.searchInput :focus {
     padding: 12px 0;
     outline: 0;
     border: 1px solid transparent;
-    /* border-bottom: 1px solid #575756; */
     border-bottom: 2px solid rgb(9, 174, 174);
     border-radius: 0;
     background-position: 100% center;

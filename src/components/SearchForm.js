@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 export default class SearchForm extends Component {
     constructor(props) {
@@ -17,9 +18,16 @@ export default class SearchForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.setStockSymbol(this.state.stockTicker)
+        this.setState({
+            stockSearched: true
+        })
     }
 
     render() {
+        console.log(this.state)
+        if (this.state.stockSearched) {
+            return <Redirect to="/stocks" />
+        }
         return (
             <div className="searchContainer">
                 <form onSubmit={this.handleSubmit}>

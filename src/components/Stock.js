@@ -22,6 +22,7 @@ export default class Stock extends Component {
 
     render() {
         console.log(this.state)
+        console.log(this.props.stockTicker)
        if (this.state.stock) {
            return (
                 <div>

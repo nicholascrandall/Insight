@@ -19,7 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      stockTicker: 'AAPL'
     }
   }
 
@@ -30,9 +30,10 @@ class App extends Component {
   }
 
   setStockSymbol = (symbol) => {
-    console.log(`${symbol} set`)
-
-
+    console.log(symbol)
+    this.setState({
+      stockTicker: symbol
+    })
   }
 
   logout = () =>{
@@ -48,7 +49,6 @@ class App extends Component {
     }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <BrowserRouter>
@@ -57,7 +57,7 @@ class App extends Component {
             <Route path="/stocks">
               <NavBar currentUser={this.state.currentUser} logout={this.logout} />
               <SearchForm setStockSymbol={this.setStockSymbol} />
-              <Stock />
+              <Stock stockTicker={this.state.stockTicker} />
 
             </Route>
 
