@@ -10,7 +10,8 @@ export default class Stock extends Component {
     }
 
     componentDidMount = () => {
-        const stockURL = 'https://api.polygon.io/v2/aggs/ticker/AAPL/prev?unadjusted=true&apiKey=' + process.env.REACT_APP_API_KEY
+        const stockURL = 'https://api.polygon.io/v2/aggs/ticker/' + this.props.stockTicker + '/prev?unadjusted=true&apiKey=' + process.env.REACT_APP_API_KEY
+        console.log(stockURL)
         fetch(stockURL)
         .then(response => response.json())
         .then(data => {
@@ -26,7 +27,7 @@ export default class Stock extends Component {
        if (this.state.stock) {
            return (
                 <div>
-                    <h2>Previous Close</h2>
+                    <h2>Previous Day's Close for {this.state.stock.results[0].T}</h2>
 
                     <h3>Open Price</h3>
                     <p>${this.state.stock.results[0].o}</p>
