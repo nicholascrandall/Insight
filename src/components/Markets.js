@@ -22,7 +22,6 @@ export default class Markets extends Component {
     }
     
     render() {
-        console.log(this.state);
         if (this.state.news) {
             return (
                 <div className="rundown">

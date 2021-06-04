@@ -30,14 +30,12 @@ class App extends Component {
   }
 
   setStockSymbol = (symbol) => {
-    console.log(symbol)
     this.setState({
       stockTicker: symbol
     })
   }
 
   logout = () =>{
-    console.log('logout function')
     const url = baseURL + '/users/logout'
       fetch(url, {method:'GET'})
       .then(response=> response.json())

@@ -24,7 +24,6 @@ export default class SearchForm extends Component {
     }
 
     render() {
-        console.log(this.state)
         if (this.state.stockSearched) {
             return <Redirect to="/stocks" />
         }

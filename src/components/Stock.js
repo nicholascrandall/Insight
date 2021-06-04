@@ -11,7 +11,6 @@ export default class Stock extends Component {
 
     componentDidMount = () => {
         const stockURL = 'https://api.polygon.io/v2/aggs/ticker/' + this.props.stockTicker + '/prev?unadjusted=true&apiKey=' + process.env.REACT_APP_API_KEY
-        console.log(stockURL)
         fetch(stockURL)
         .then(response => response.json())
         .then(data => {
@@ -22,8 +21,6 @@ export default class Stock extends Component {
     }
 
     render() {
-        console.log(this.state)
-        console.log(this.props.stockTicker)
        if (this.state.stock) {
            return (
                 <div>

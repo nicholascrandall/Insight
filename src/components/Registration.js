@@ -70,7 +70,6 @@ export default class Register extends Component {
             credentials: 'include'
         }).then(response => response.json())
         .then(data => {
-            console.log(data)
             this.props.setCurrentUser(data.data)
             this.setState({
                 username: '',
