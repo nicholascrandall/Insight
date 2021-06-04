@@ -1,5 +1,5 @@
 # Insight
-![Wireframe](./wireframe.png)
+![Wireframe](./pic.png)
 
 [Backend Repo](https://github.com/nicholascrandall/Insight_API)
 
