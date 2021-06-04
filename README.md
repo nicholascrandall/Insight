@@ -24,3 +24,4 @@ This app will allow you to:
 - View total net worth
 - View performance by account or by individual stock
 - The ability to buy and sell stocks directly through insight
+- The ability to favorite and track specific stocks on our homepage
