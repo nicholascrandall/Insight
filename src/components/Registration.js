@@ -30,7 +30,7 @@ export default class Register extends Component {
 
         this.setState({
             signUp,
-          }, () => console.log(this.state.signUp));
+          }, () => console.log('signed up'));
 
         let url = this.props.baseURL + '/users/register'
 
@@ -58,7 +58,7 @@ export default class Register extends Component {
 
         this.setState({
             login,
-          }, () => console.log(this.state.login));
+          }, () => console.log('logging in'));
 
         let url = this.props.baseURL + '/users/login'
         
