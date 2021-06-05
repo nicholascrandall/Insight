@@ -27,7 +27,6 @@ export default class Markets extends Component {
     
     render() {
         if (this.state.news) {
-            console.log(this.state.news)
             return (
                 <div className="rundown">
                     <h2>Daily Rundown</h2>
