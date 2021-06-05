@@ -44,7 +44,7 @@
   border: 2px solid black;
 }
 
-.rundown li {
+li {
   list-style: none;
 }
 
@@ -107,4 +107,25 @@ button:hover {
 .searchContainer {
   margin: 10px 0 0 10px;
   width: 60%;
+}
+
+.col1 {
+  float: left;
+  width: 20%;
+  height: 65px;
+}
+.col2 {
+  float: none;
+  height: 65px;
+  overflow: hidden;
+  display: table-cell; /* turn this off to lock height at 65px */
+}
+.col3 {
+  float: right;
+  height: 65px;
+  width: 20%;
+}
+
+h3 {
+  color: #012169;
 }
