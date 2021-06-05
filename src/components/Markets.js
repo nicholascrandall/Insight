@@ -9,20 +9,25 @@ export default class Markets extends Component {
     }
 
     componentDidMount = () => {
-        const stockURL = 'https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=5&apiKey=' + process.env.REACT_APP_NEWS_KEY
-        fetch(stockURL)
+        const stockURL = 'https://free-news.p.rapidapi.com/v1/search?q=Market&lang=en'
+        fetch(stockURL, {
+            method: "GET",
+            headers: {
+                "x-rapidapi-key": process.env.REACT_APP_NEWS_KEY,
+		        "x-rapidapi-host": "free-news.p.rapidapi.com"
+            }
+        })
         .then(response => response.json())
         .then(data => {
-        //    if (data.status === "OK") {
             this.setState({
                 news: data
             })
-        // }
         })
     }
     
     render() {
         if (this.state.news) {
+            console.log(this.state.news)
             return (
                 <div className="rundown">
                     <h2>Daily Rundown</h2>
@@ -32,10 +37,10 @@ export default class Markets extends Component {
                         this.state.news.articles.map((article, index) => {
                             return (
                                 <>
-                                <a href={article.url}><h3>{article.title}</h3>
+                                <a href={article.link}><h3>{article.title}</h3>
                                 </a>
-                                <img src={article.urlToImage} className="newsImage" alt="business article" />
-                                <li key={index}>{article.description}</li>
+                                <img src={article.media} className="newsImage" alt="business article" />
+                                <li key={index}>{article.summary}</li>
                                 </>
                             )
                         })
