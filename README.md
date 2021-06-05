@@ -3,7 +3,7 @@
 
 [Backend Repo](https://github.com/nicholascrandall/Insight_API)
 
-[Heroku Deployment](https://dashboard.heroku.com/apps/insight-nc)
+[Heroku Deployment](https://insight-nc.herokuapp.com/)
 
 Insight is a Full Stack Portfolio Tracker that gives you all the information you need to manage your assets and grow your wealth!
 
